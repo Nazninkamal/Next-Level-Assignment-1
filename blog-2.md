@@ -1,16 +1,16 @@
-## Title: # Why `any` is a Type Safety Hole and Why `unknown` is the Safer Choice in TypeScript
+## Title: Why `any` is a Type Safety Hole and Why `unknown` is the Safer Choice in TypeScript
 
 ## Introduction 
 
-TypeScript-এ টাইপ সেফটি মানে হলো—ভুল টাইপ ব্যবহার করলে আগেই error ধরা পড়া। any কে type safety hole বলা হয় ,অন্যদিকে unknown কে  Safer বলা হয়। 
+TypeScript-এ টাইপ সেফটি মানে হলো—ভুল টাইপ ব্যবহার করলে আগেই error ধরা পড়া। any কে type safety hole/unsafe বলা হয় ,অন্যদিকে unknown কে  Safer বলা হয়। 
 
 
 ## ❌ any কেন unsafe?
 
 any ব্যবহার করলে TypeScript কোনো type checking করে না। ফলে যেকোনো operation করা যায়, যা runtime error ঘটায়।
 
+```ts
 let data: any;
-
 data = "hello";
 data.toUpperCase(); // ঠিক আছে
 
@@ -18,11 +18,11 @@ data = 17;
 data.toUpperCase(); // runtime error, কিন্তু compile time এ ধরা পড়ে না
 
 
-## ✅ unknown কেন বেশি নিরাপদ?
+## ✅ unknown কেন বেশি safe?
 
- unknown বেশি নিরাপদ কারণ এটি বাধ্য করে আগে type check (type narrowing) করতে, তারপরই value ব্যবহার করতে দেয়।
+unknown বেশি safe কারণ এটি বাধ্য করে আগে type check (type narrowing) করতে, তারপরই value ব্যবহার করতে দেয়।
 
-
+```ts
 let data: unknown;
 
 data = "hello";
@@ -37,12 +37,15 @@ Type narrowing হলো এমন একটি প্রক্রিয়া �
 
 সহজভাবে: আগে check → তারপর ব্যবহার 
 
+
+```ts
 let data: unknown;
 
 data = "hello";
 
 if (typeof data === "string") {
-  console.log(data.toUpperCase()); // ✅ এখন safe
+
+    console.log(data.toUpperCase()); // ✅ এখন safe
 }
 
 প্রথমে check করা হলো এটি string কিনা
