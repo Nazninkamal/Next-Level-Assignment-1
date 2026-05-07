@@ -16,6 +16,7 @@ data.toUpperCase(); // ঠিক আছে
 
 data = 17;
 data.toUpperCase(); // runtime error, কিন্তু compile time এ ধরা পড়ে না
+```
 
 
 ## ✅ unknown কেন বেশি safe?
@@ -29,6 +30,7 @@ data = "hello";
 data = 123;
 
 data.toUpperCase(); // ❌ Error
+```
 
 
 ## Type Narrowing কী?
@@ -47,6 +49,8 @@ if (typeof data === "string") {
 
     console.log(data.toUpperCase()); // ✅ এখন safe
 }
+```
+
 
 প্রথমে check করা হলো এটি string কিনা
 TypeScript বুঝে নিল এখন এটি string
