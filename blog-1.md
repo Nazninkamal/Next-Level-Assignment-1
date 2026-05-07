@@ -1,4 +1,4 @@
-# Topic !: How do Pick and Omit utility types prevent code duplication while creating specialized "slices" of a master interface?
+## Topic 1: How do Pick and Omit utility types prevent code duplication while creating specialized "slices" of a master interface?
 
 ## Introduction
 
